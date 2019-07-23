@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.ts",
-    "build-client": "cd client && npm run build --prod",
+    "heroku-postbuild": "cd client && npm run build --prod",
     "launch-server": "cd ./dist && node index.js",
     "build": "npm run build-client && npm run tsc && npm run launch-server",
     "tsc": "tsc",
