@@ -135,7 +135,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   addEmoji($event) {
-    this.message.setValue(this.message.value + " " + $event.emoji.native);
+    this.message.setValue((this.message.value ? this.message.value : "") + " " + $event.emoji.native);
   }
 
   get usernameStore(): Observable<string> {
