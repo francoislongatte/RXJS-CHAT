@@ -1,0 +1,81 @@
+<form class="form" [formGroup]="settings" [ngClass]="{'is-dark': (isDark | async)}">
+  <div class="field">
+    <label class="label">Username</label>
+    <div class="control has-icons-left has-icons-right">
+      <input
+        class="input"
+        type="text"
+        placeholder="Text input"
+        formControlName="username"
+      />
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Interface Color</label>
+    <div class="control radioBox">
+      <label
+        class="radio"
+        [ngClass]="{ 'is-active': isActive(false, 'themeDark') }"
+      >
+        <input type="radio" formControlName="themeDark" [value]="false" />
+        light
+      </label>
+      <label
+        class="radio"
+        [ngClass]="{ 'is-active': isActive(true, 'themeDark') }"
+      >
+        <input type="radio" formControlName="themeDark" [value]="true" />
+        dark
+      </label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Clock Display</label>
+    <div class="control radioBox">
+      <label
+        class="radio"
+        [ngClass]="{ 'is-active': isActive(false, 'clock12hour') }"
+      >
+        <input type="radio" formControlName="clock12hour" [value]="false" />
+        24 Hours
+      </label>
+      <label
+        class="radio"
+        [ngClass]="{ 'is-active': isActive(true, 'clock12hour') }"
+      >
+        <input type="radio" formControlName="clock12hour" [value]="true" />
+        12 Hours
+      </label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Shorcut ( CTRL + ENTER )</label>
+    <div class="control radioBox">
+      <label
+        class="radio"
+        [ngClass]="{ 'is-active': isActive(false, 'shortcutEnter') }"
+      >
+        <input type="radio" formControlName="shortcutEnter" [value]="false" />
+        No
+      </label>
+      <label
+        class="radio"
+        [ngClass]="{ 'is-active': isActive(true, 'shortcutEnter') }"
+      >
+        <input type="radio" formControlName="shortcutEnter" [value]="true" />
+        Yes
+      </label>
+    </div>
+  </div>
+  <div class="field">
+      <label class="label">Shorcut ( CTRL + ENTER )</label>
+      <div class="control">
+          <button class="button" type="button" (click)="reset()">
+              Reset the settings
+            </button>
+      </div>
+    </div>
+</form>

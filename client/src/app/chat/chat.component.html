@@ -1,0 +1,62 @@
+<div>
+  <ol id="boxScroll" class="boxMessages" (scroll)="onScroll($event)">
+    <ng-container *ngFor="let message of messages | async">
+      <li
+        *ngIf="message?.description"
+        [ngClass]="{ 'is-right': (usernameStore | async) === message.name }"
+      >
+        <div class="meta">
+          <small
+            ><ng-container *ngIf="(usernameStore | async) !== message.name"
+              >{{ message.name }} - </ng-container
+            >{{ formatDateAMPM(message.date) | async }}
+            </small
+          >
+        </div>
+        <div
+          class="description"
+          [ngClass]="{
+            'is-primary': (usernameStore | async) === message.name,
+            'is-black': isDark | async
+          }"
+        >
+          <div [innerHTML]="message?.description | linkify"></div>
+          <ng-container *ngIf="isEmbedVideo(message?.description)">
+            <div [innerHTML]="embedVideo(message?.description)"></div>
+          </ng-container>
+        </div>
+      </li>
+    </ng-container>
+  </ol>
+</div>
+<div class="barActionMessage">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-11">
+        <div class="field has-addons">
+          <div class="control">
+            <emoji-mart (emojiClick)="addEmoji($event)" [ngClass]="{'is-close': !openSmiley}" [style]="{ position: 'absolute', bottom: '40px', left: '0px' }"></emoji-mart>
+            <button class="button is-medium" type="button" (click)="toggleSmiley()">
+              <i class="far fa-smile"></i>
+            </button>
+          </div>
+          <div class="control is-expanded" [ngClass]="{ 'is-loading': isLoading }">
+            
+            <textarea class="textarea"
+              type="textarea"
+              [formControl]="message"
+              (keydown.enter)="sendMessage($event)"
+              rows="1"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="column is-1">
+        <button class="button is-primary is-fullwidth" (click)="sendMessage()">
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="overlayBlink" [@activeAnimation]="activeBlink"></div>

@@ -1,0 +1,29 @@
+nav.navbar {
+  width: 100%;
+}
+
+.notifNotRead{
+  border-radius: 50%;
+  color: black;
+  background-color: white;
+  border: 1px solid gray;
+  width: 1.5em;
+  height: 1.5em;
+  font-size:.8em;
+  position: absolute;
+  right: -.5em;
+  top: -.5em;
+}
+.hero.is-fullheight-with-navbar .hero-body {
+  align-items: normal;
+}
+@media screen and (max-width: 1023px) {
+  .navbar-menu.is-active {
+    position: absolute;
+    width: 100%;
+  }
+  .navbar-menu.is-black {
+    background-color: #0a0a0a;
+    color: white;
+  }
+}

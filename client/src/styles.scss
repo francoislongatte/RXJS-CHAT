@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+$primary: #9C0201;
+
+@import '~node_modules/bulma-scss/bulma.scss';
+
+.boxMessages li {
+ 
+    .description {
+       div a{
+        background: transparent;
+        color: black;
+        &:hover{
+            color: gray;
+        }
+      }
+      &.is-primary div a{
+          color:white;
+          background: transparent;
+          &:hover{
+              color: gray;
+          }
+      }
+      
+    }
+  }
