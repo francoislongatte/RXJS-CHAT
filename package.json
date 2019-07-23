@@ -7,7 +7,7 @@
     "dev": "nodemon index.ts",
     "build-client": "cd client && npm run build --prod",
     "launch-server": "cd ./dist && node index.js",
-    "build-project": "npm run build-client && npm run tsc && npm run launch-server",
+    "build": "npm run build-client && npm run tsc && npm run launch-server",
     "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
